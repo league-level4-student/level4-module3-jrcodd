@@ -23,6 +23,9 @@ class ExceptionsTest {
 			e.printStackTrace();
 			assertArrayEquals(vars, new int[] {4, 1, 2, 3});
 		}
+		finally {
+			System.out.println("finally");
+		}
 	}
 	
 	//2. In the ExceptionMethods class, write a method called divide that takes
@@ -32,12 +35,18 @@ class ExceptionsTest {
 	//3. Complete the JUnit test method to test the divide method.
 	@Test
 	public void testDivideByZeroException() {
+		System.out.println();
 		try {
 			assertEquals(2.5, ExceptionMethods.divide(5, 2));
+			assertEquals(0, ExceptionMethods.divide(5,0));
+			fail("IllegalArgumentException not thrown");
 		}
-		catch{
-			e.printStackTrace()
+		catch(IllegalArgumentException e){
+			e.printStackTrace();
 			
+		}
+		finally {
+			System.out.println("finally");
 		}
 	}
 	
@@ -48,7 +57,13 @@ class ExceptionsTest {
 	//5. Complete the JUnit test method to test the reverseStringMethod.
 	@Test
 	public void testReverseString() {
-		
+		try {
+			assertEquals("qwert", ExceptionMethods.ReverseString("trewq"));
+			assertEquals("", ExceptionMethods.ReverseString(""));
+		}
+		catch(IllegalStateException e){
+			e.printStackTrace();
+		}
 	}
 	
 	
